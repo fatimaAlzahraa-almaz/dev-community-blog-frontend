@@ -1,0 +1,10 @@
+{
+  "style": "base-nova",
+  "rsc": true,
+  "tailwind": {
+    "config": "",
+    "css": "app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  }
+}
