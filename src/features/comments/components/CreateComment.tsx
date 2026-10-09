@@ -19,8 +19,8 @@ const CreateComment = ({ slug }: { slug: string }) => {
   };
 
   return (
-    <div className="w-full flex gap-2 p-2 sm:p-5 ">
-      <div className="w-8 h-8 rounded-full  flex items-center justify-center bg-accent cursor-pointer relative overflow-hidden">
+    <div className="w-full flex gap-2 p-1 sm:p-5 ">
+      <div className="w-8 h-8 rounded-full  flex items-center justify-center bg-accent cursor-pointer relative overflow-hidden shrink-0">
         {data?.profile_img ? (
           <Image
             src={data?.profile_img}
