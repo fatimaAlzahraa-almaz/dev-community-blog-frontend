@@ -21,15 +21,14 @@ const CommentCard = ({ data }: CommentCardParams) => {
     <div className="flex gap-1 sm:gap-2 w-full p-1 sm:p-2 ">
       <div
         onClick={handleUserClick}
-        className="h-8 w-8 flex items-center justify-center bg-accent rounded-full overflow-hidden cursor-pointer shrink-0"
+        className="h-8 w-8 flex items-center justify-center bg-accent rounded-full overflow-hidden cursor-pointer shrink-0 relative"
       >
         {data?.author.profile_img ? (
           <Image
-            className="rounded-full"
+            className=" object-cover"
             src={data?.author.profile_img}
             alt={data?.author.username}
-            width={30}
-            height={30}
+            fill
           />
         ) : (
           <User className="rounded-full  " />
