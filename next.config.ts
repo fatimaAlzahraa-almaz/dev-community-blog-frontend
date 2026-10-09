@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
       // Production Django backend
       {
         protocol: "https",
-        hostname: "https://dev-community-blog-backend.onrender.com",
+        hostname: "res.cloudinary.com",
         port: "",
         pathname: "/media/**",
       },
