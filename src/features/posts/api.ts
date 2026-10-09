@@ -3,7 +3,7 @@ import {GetPostsParams,GetPostParams,CreatePostParams,UpdatePostParams,DeletePos
   ,PostMutationResponse,GetCategoriesResponse
 } from './type';
 export const getPosts=async({search,page,ordering,category,author,feed}:GetPostsParams):Promise<MultiplePosts>=>{
-    const response=await api.get<MultiplePosts>('/api/posts',{
+    const response=await api.get<MultiplePosts>('/api/posts/',{
       params:{
         search,
         page,
