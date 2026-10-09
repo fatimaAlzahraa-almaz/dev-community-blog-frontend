@@ -86,15 +86,14 @@ const Navbar = () => {
           </li>
           <li
             onClick={handleAvatarClick}
-            className="w-10 h-10 bg-accent  rounded-full border cursor-pointer flex items-center justify-center overflow-hidden text-accent-foreground"
+            className="w-10 h-10 bg-accent  rounded-full border cursor-pointer flex items-center justify-center overflow-hidden text-accent-foreground relative"
           >
             {isLoggedIn && avatarSrc ? (
               <Image
-                className="rounded-full"
+                className="object-cover"
                 src={avatarSrc}
                 alt="profile img"
-                width={40}
-                height={40}
+                fill
               />
             ) : (
               <User />
@@ -119,15 +118,14 @@ const Navbar = () => {
       <ul className="flex sm:hidden   items-center ">
         <li
           onClick={handleAvatarClick}
-          className=" w-10 h-10 bg-accent rounded-full border cursor-pointer flex items-center justify-center overflow-hidden text-accent-foreground"
+          className=" w-10 h-10 bg-accent rounded-full border cursor-pointer flex items-center justify-center overflow-hidden text-accent-foreground relative"
         >
           {isLoggedIn && avatarSrc ? (
             <Image
-              className="rounded-full"
+              className="object-cover"
               src={avatarSrc}
               alt="profile img"
-              width={40}
-              height={40}
+              fill
             />
           ) : (
             <User />
