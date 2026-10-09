@@ -34,7 +34,7 @@ export default function Page({
         ) : (
           <div className=" w-full flex flex-col gap-2  max-w-220   bg-background rounded-md border p-1 shadow-sm">
             {post && <PostDetails data={post} />}
-            <p className="text-primary text-lg font-bold p-2 sm:p-4">{`Top Comments (${post?.comments_count})`}</p>
+            <p className="text-primary text-lg font-bold p-2 sm:p-4">{`Top Comments (${post?.comments_count ?? 0})`}</p>
             <CreateComment slug={slug} />
             {comments && (
               <div className="flex flex-col w-full sm:gap-2 pb-8 sm:p-3">
