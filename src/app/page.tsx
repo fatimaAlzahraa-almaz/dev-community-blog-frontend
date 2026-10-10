@@ -11,7 +11,7 @@ import { getErrorMessage } from "@/lib/getErrorMessage";
 export default function Home() {
   const[feed,setFeed]=useState<'all' | 'following'>('all');
   const[category,setCategory]=useState<string|undefined>(undefined);
-  const{data,isLoading, fetchNextPage,
+  const{data,isLoading,isPending, fetchNextPage,
   hasNextPage,
   isFetchingNextPage,isError,error}=usePosts({feed,category});
   console.log(data)
@@ -47,7 +47,7 @@ export default function Home() {
           <Categories category={category} setCategory={setCategory}/>
          </div>
        {
-        isLoading ? <div className="flex justify-center w-full h-[50vh] items-center"><Spinner/></div> :
+        isPending ? <div className="flex justify-center w-full h-[50vh] items-center"><Spinner/></div> :
         isError ? <div className="w-full min-h-[40vh] flex items-center"> <ErrorMessage message={getErrorMessage(error)}/></div> :
         data?.pages[0]?.results?.length === 0 ? <p className="text-lg sm:text-xl  w-full min-h-[40vh] flex items-center justify-center">No posts found</p> :
         <div className="flex flex-col gap-4">
@@ -65,7 +65,7 @@ export default function Home() {
        
     </div>
     {
-      !isLoading &&  <button className={ hasNextPage ?"w-full p-1 border font-semibold rounded-md cursor-pointer text-chart-4 shadow-sm" : "w-full p-1 border font-semibold rounded-md cursor-not-allowed text-muted-foreground shadow-sm"}
+      !isLoading  && <button className={ hasNextPage ?"w-full p-1 border font-semibold rounded-md cursor-pointer text-chart-4 shadow-sm" : "w-full p-1 border font-semibold rounded-md cursor-not-allowed text-muted-foreground shadow-sm"}
   onClick={() => fetchNextPage()}
   disabled={!hasNextPage || isFetchingNextPage}
 >
