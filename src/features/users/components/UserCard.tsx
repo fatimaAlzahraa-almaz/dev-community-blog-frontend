@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { useAuthStore } from "@/features/auth/store";
 import { getErrorMessage } from "@/lib/getErrorMessage";
-const UserCard = ({ username }: UserCardParams) => {
-  const { data } = useUser({ username });
+
+const UserCard = ({data}:UserCardParams) => {
   const router = useRouter();
   const accessToken = useAuthStore((state) => state.accessToken);
   const isInitalized = useAuthStore((state) => state.isInitialized);
@@ -19,19 +19,19 @@ const UserCard = ({ username }: UserCardParams) => {
   const isCurrentUser = data?.username === currentUser?.username;
 
   const handleUserClick = () => {
-    router.push(`/users/${username}`);
+    router.push(`/users/${data?.username}`);
   };
   const handleFollowClick = () => {
     !isLoggedIn
       ? router.push("/login")
       : data &&
         followMutation.mutate({
-          username: username,
+          username: data?.username,
           is_following: data?.is_following,
         });
   };
   const handleEditProfileClick = () => {
-    router.push(`/users/${username}/settings`);
+    router.push(`/users/${data?.username}/settings`);
   };
   return (
     <div className="flex flex-col  border rounded-md  p-4 gap-3 text-primary w-full max-w-220 lg:max-w-90 py-4  h-fit bg-background shadow-sm">

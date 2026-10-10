@@ -35,7 +35,7 @@ export type useFollowProps={
   is_following:boolean,
 }
 export type UserCardParams={
-  username:string,
+  data:UserDetailes,
 }
 export type UserDetailsParams={
   data:UserDetailes,

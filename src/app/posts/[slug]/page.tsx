@@ -10,6 +10,7 @@ import UserCardSkeleton from "@/components/ui/UserCardSkeleton";
 import PostDetailsSkeleton from "@/components/ui/PostDetailsSkeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { getErrorMessage } from "@/lib/getErrorMessage";
+import { useUser } from "@/hooks/useUser";
 export default function Page({
   params,
 }: {
@@ -23,6 +24,10 @@ export default function Page({
     isError,
     error,
   } = usePost({ slug: slug });
+  const authorUsername = post?.author?.username ?? "";
+  const { data: user, isLoading: isUserLoading } = useUser({
+    username: authorUsername,
+  });
 
   return (
     <div className="w-full bg-background  flex justify-center min-h-screen ">
@@ -53,8 +58,10 @@ export default function Page({
         )}
         {isPostLoading ? (
           <UserCardSkeleton />
+        ) : isUserLoading ? (
+          <UserCardSkeleton />
         ) : (
-          post && <UserCard username={post?.author?.username} />
+          user && <UserCard data={user} />
         )}
       </div>
     </div>
